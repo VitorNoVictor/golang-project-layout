@@ -1,0 +1,16 @@
+name: Fork News
+on:
+  schedule:
+    - cron: '0 10 * * 2'
+
+jobs:
+  fork-news:
+    runs-on: ubuntu-latest
+    name: Syncing with parent repository
+    steps:
+      - id: fork-news-sync
+        uses: vitornovictor/fork-news@v1.0.0
+        with:
+          from-branch: master
+          to-branch: master
+          access-token: ${{ secrets.FORK_NEWS_TOKEN }}
